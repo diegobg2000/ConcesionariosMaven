@@ -23,7 +23,7 @@ public class Start {
 	concesionario2.setTelefono("14253654");
 	
 	/***********************
-	 * Persistimos los datos
+	 * PERSISTIMOS LOS DATOS
 	 ***********************/
 	CreateConcesionario createConcesionario = new CreateConcesionario();
 	createConcesionario.create(concesionario1);
