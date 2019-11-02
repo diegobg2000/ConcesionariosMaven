@@ -1,5 +1,9 @@
 package ConcesionarioMaven.negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity		//Para indicarle al JPA que este objeto va a ser una entidad en la BD
@@ -37,10 +42,30 @@ public class ConcesionarioBean {
 	@Column
 	private String telefono;
 	
+	@ManyToMany(mappedBy = "concesionarios", cascade = CascadeType.ALL)
+	private List<CocheBean> coches = new ArrayList<CocheBean>();
 	
 	
-	
-	
+	/**********************************************
+	 * METODOS PARA AÑADIR LOS OBJETOS A LAS LISTAS
+	 * Operacion que permite añadir coches al concesionario y este concesionario a la lista de coches
+	 **********************************************/
+	public void addCoche(CocheBean coche) {
+		if(!coches.contains(coche)) {
+			coches.add(coche);
+		
+			//Hay que indicarle al coche que añada este concesionario a su lista
+			List<ConcesionarioBean> concesionarios = coche.getConcesionarios();
+			/*
+			 Añade a la lista "concesionarios el coche que se esta añadiendo con el metodo addCoche, 
+			 para ello en el siguiente if comprueba que este coche no haya sido añadido a la lista anteriormente
+			 */
+			if(!concesionarios.contains(this)) {
+				concesionarios.add(this);
+			}
+		}
+		
+	}
 	/***********************
 	 * SETERS AND GETERS
 	 ***********************/
