@@ -2,8 +2,10 @@ package ConcesionarioMaven.inicio;
 
 import ConcesionarioMaven.modelo.coche.CreateCoche;
 import ConcesionarioMaven.modelo.concesionario.CreateConcesionario;
+import ConcesionarioMaven.modelo.trabajador.CreateTrabajador;
 import ConcesionarioMaven.negocio.CocheBean;
 import ConcesionarioMaven.negocio.ConcesionarioBean;
+import ConcesionarioMaven.negocio.TrabajadorBean;
 
 public class Start {
 	public static void main(String[] args) {
@@ -27,6 +29,7 @@ public class Start {
 	
 	
 	
+	
 	//Coches
 	CocheBean coche1 = new CocheBean();
 	coche1.setBastidor("2453657GAHBGF615267HAHANDG");
@@ -37,24 +40,52 @@ public class Start {
 	coche1.setEjes("Traccion trasera");
 	coche1.setPrecioMin(80000);	
 	
+	//Trabajadores
+	TrabajadorBean trabajador1 = new TrabajadorBean();
+	trabajador1.setNombre("Diego");
+	trabajador1.setApellidos("Bascuas Gutiérrez");
+	trabajador1.setDNI("123456789B");
+	trabajador1.setDirecion("Calle1");
+	trabajador1.setLocalidad("Oviedo");
+	trabajador1.setPrrovincia("Asturias");
+	trabajador1.setTelefono(123456789);
+	trabajador1.setSueldoBase(2500);
+	
+	
 	
 	
 	/***********************
 	 * PERSISTIMOS LOS DATOS
 	 ***********************/
+	
+
+	
+		
 	//Persistimos concesionarios
 	CreateConcesionario createConcesionario = new CreateConcesionario();
 	createConcesionario.create(concesionario1);
 	createConcesionario.create(concesionario2);
 	
+	//USO DEL METODO addTrabajador()
+	concesionario1.addTrabajador(trabajador1);
+	
+	//USO DEL METODO addCoche()
+	concesionario1.addCoche(coche1);
+
+	
+
 	//Persistimos coches
 	CreateCoche createCoche = new CreateCoche();
 	createCoche.create(coche1);
 	
-	
-	//USO DEL METODO addCoche()
-	concesionario1.addCoche(coche1);
-	
+	//Persistimos trabajadores
+	CreateTrabajador createTrabajador = new CreateTrabajador();
+	createTrabajador.create(trabajador1);
+	/*	
+	 * concesionario1.addTrabajador(trabajador1);
+	 * Con esta linea aqui los id se ordenan de forma correcta pero no relaciona la tabla
+	 */
+
 	}
 
 }

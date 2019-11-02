@@ -53,7 +53,7 @@ public class CocheBean {
 		return concesionarios;
 	}
 	/*
-	 	Â¿?Â¿?Â¿?Â¿?Â¿?Â¿?
+	 	¿¿?¿?¿?¿?¿?¿?¿
 	 */
 	public void setConcesionarios(List<ConcesionarioBean> concesionarios) {
 		this.concesionarios = concesionarios;

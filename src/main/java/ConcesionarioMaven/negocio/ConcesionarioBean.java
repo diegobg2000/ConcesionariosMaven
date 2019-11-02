@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity		//Para indicarle al JPA que este objeto va a ser una entidad en la BD
@@ -57,7 +58,7 @@ public class ConcesionarioBean {
 			//Hay que indicarle al coche que añada este concesionario a su lista
 			List<ConcesionarioBean> concesionarios = coche.getConcesionarios();
 			/*
-			 Añade a la lista "concesionarios el coche que se esta añadiendo con el metodo addCoche, 
+			 A�ade a la lista "concesionarios el coche que se esta añadiendo con el metodo addCoche, 
 			 para ello en el siguiente if comprueba que este coche no haya sido añadido a la lista anteriormente
 			 */
 			if(!concesionarios.contains(this)) {
@@ -66,11 +67,44 @@ public class ConcesionarioBean {
 		}
 		
 	}
+	
+	
+	@OneToMany(mappedBy = "concesionario", cascade=CascadeType.ALL)
+	private List<TrabajadorBean> trabajadores = new ArrayList<TrabajadorBean>();
+	
+	// // // // // 
+	public void addTrabajador(TrabajadorBean trabajador) {
+		if(!trabajadores.contains(trabajador)) {
+			trabajadores.add(trabajador);
+			//Vinculamos a este trabajador con su concesionario
+			trabajador.setConcesionario(this);
+		}
+	}
 	/***********************
 	 * SETERS AND GETERS
 	 ***********************/
+	
+	
 	public String getNombre() {
 		return nombre;
+	}
+	public long getIdConcesionario() {
+		return idConcesionario;
+	}
+	public void setIdConcesionario(long idConcesionario) {
+		this.idConcesionario = idConcesionario;
+	}
+	public List<CocheBean> getCoches() {
+		return coches;
+	}
+	public void setCoches(List<CocheBean> coches) {
+		this.coches = coches;
+	}
+	public List<TrabajadorBean> getTrabajadores() {
+		return trabajadores;
+	}
+	public void setTrabajadores(List<TrabajadorBean> trabajadores) {
+		this.trabajadores = trabajadores;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
