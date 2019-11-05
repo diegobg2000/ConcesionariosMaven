@@ -49,10 +49,11 @@ import javax.persistence.Table;
 	/***********************************
 	 	RELACION DE LAS TABLAS
 	 ***********************************/
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private ConcesionarioBean concesionario;
 	
-	
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private CategoriaBean categoria;
 	
 	
 	/***********************************
@@ -61,6 +62,12 @@ import javax.persistence.Table;
 	
 	public ConcesionarioBean getConcesionario() {
 		return concesionario;
+	}
+	public CategoriaBean getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(CategoriaBean categoria) {
+		this.categoria = categoria;
 	}
 	public void setConcesionario(ConcesionarioBean concesionario) {
 		this.concesionario = concesionario;

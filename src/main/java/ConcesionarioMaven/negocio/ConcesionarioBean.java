@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity		//Para indicarle al JPA que este objeto va a ser una entidad en la BD
@@ -63,6 +65,7 @@ public class ConcesionarioBean {
 			 */
 			if(!concesionarios.contains(this)) {
 				concesionarios.add(this);
+				
 			}
 		}
 		
@@ -72,7 +75,7 @@ public class ConcesionarioBean {
 	@OneToMany(mappedBy = "concesionario", cascade=CascadeType.ALL)
 	private List<TrabajadorBean> trabajadores = new ArrayList<TrabajadorBean>();
 	
-	// // // // // 
+	
 	public void addTrabajador(TrabajadorBean trabajador) {
 		if(!trabajadores.contains(trabajador)) {
 			trabajadores.add(trabajador);
@@ -80,6 +83,11 @@ public class ConcesionarioBean {
 			trabajador.setConcesionario(this);
 		}
 	}
+	
+	/*
+	@ManyToOne
+	private TallerBean taller;
+	*/
 	/***********************
 	 * SETERS AND GETERS
 	 ***********************/
@@ -88,6 +96,12 @@ public class ConcesionarioBean {
 	public String getNombre() {
 		return nombre;
 	}
+//	public TallerBean getTaller() {
+//		return taller;
+//	}
+//	public void setTaller(TallerBean taller) {
+//		this.taller = taller;
+//	}
 	public long getIdConcesionario() {
 		return idConcesionario;
 	}
