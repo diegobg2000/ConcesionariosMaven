@@ -34,8 +34,8 @@ public class TallerBean {
 	/*********************************************************
  	RELACIONES ENTRE TABLAS
 ************************************************************/
-	@OneToOne
-	@JoinColumn(name = "FK_concesionario")
+	@OneToOne(mappedBy = "taller")
+//	@JoinColumn(name = "FK_concesionario")
 	private ConcesionarioBean concesionario;
 //	@OneToMany(mappedBy = "taller", cascade=CascadeType.ALL)
 //	private List<ConcesionarioBean> concesionarios = new ArrayList<ConcesionarioBean>();

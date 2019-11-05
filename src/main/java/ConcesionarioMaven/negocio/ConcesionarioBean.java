@@ -84,10 +84,10 @@ public class ConcesionarioBean {
 		}
 	}
 	
-	/*
-	@ManyToOne
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private TallerBean taller;
-	*/
+	
 	/***********************
 	 * SETERS AND GETERS
 	 ***********************/
@@ -96,12 +96,12 @@ public class ConcesionarioBean {
 	public String getNombre() {
 		return nombre;
 	}
-//	public TallerBean getTaller() {
-//		return taller;
-//	}
-//	public void setTaller(TallerBean taller) {
-//		this.taller = taller;
-//	}
+	public TallerBean getTaller() {
+		return taller;
+	}
+	public void setTaller(TallerBean taller) {
+		this.taller = taller;
+	}
 	public long getIdConcesionario() {
 		return idConcesionario;
 	}

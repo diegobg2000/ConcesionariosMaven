@@ -27,12 +27,31 @@ public class Start {
 	concesionario1.setTelefono("123456789");
 	
 	
+	
 	ConcesionarioBean concesionario2 = new ConcesionarioBean();
 	concesionario2.setNombre("Concesionario 2");
 	concesionario2.setCIF("7612312763H");
 	concesionario2.setLocalidad("Barcelona");
 	concesionario2.setProvincia("Cataluna");
 	concesionario2.setTelefono("14253654");
+	
+	ConcesionarioBean concesionario3 = new ConcesionarioBean();
+	concesionario3.setNombre("Concesionario 3");
+	concesionario3.setCIF("23424324432F");
+	concesionario3.setLocalidad("Boadilla");
+	concesionario3.setProvincia("Madrid");
+	concesionario3.setTelefono("2345643456");
+	
+	ConcesionarioBean concesionario4 = new ConcesionarioBean();
+	concesionario4.setNombre("Concesionario 4");
+	concesionario4.setCIF("25443565467J");
+	concesionario4.setLocalidad("Lugo");
+	concesionario4.setProvincia("Galicia");
+	concesionario4.setTelefono("4668788643");
+	
+	
+	
+	
 	
 	
 	
@@ -70,6 +89,7 @@ public class Start {
 	//Talleres
 	TallerBean taller1 = new TallerBean();
 	taller1.setConcesionario(concesionario1);
+	concesionario1.setTaller(taller1);
 	
 	//Reparacion
 	ReparacionBean reparacion1 = new ReparacionBean();
@@ -155,9 +175,6 @@ public class Start {
 	 * Con esta linea aqui los id se ordenan de forma correcta pero no relaciona la tabla
 	 */
 	
-	//Persistimos talleres
-		CreateTaller createTaller = new CreateTaller();
-		createTaller.create(taller1);
 	
 	//USO DEL METODO addReparacion()
 	taller1.addReparacion(reparacion1);
